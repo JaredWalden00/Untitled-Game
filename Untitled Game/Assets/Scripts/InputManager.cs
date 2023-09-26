@@ -116,12 +116,11 @@ public class InputManager : MonoBehaviour
 
             if (playerManager.canDoCombo)
             {
-                if (animation2InProgress || playerManager.isInteracting)
+                if (animation2InProgress)
                 {
                     return;  // Return early if animation is already playing or interacting
                 }
-
-                animation2InProgress = true;
+                animation1InProgress = false;
                 comboFlag = true;
                 playerAttacker.HandleWeaponCombo(playerInventory.rightWeapon);
                 comboFlag = false;
@@ -129,19 +128,9 @@ public class InputManager : MonoBehaviour
 
             else
             {
-                if (animation1InProgress || playerManager.isInteracting)
+                if (animation1InProgress || animation2InProgress)
                 {
                     return;  // Return early if animation is already playing or interacting
-                }
-
-                playerManager.isInteracting = true;  // Set isInteracting to true at the beginning
-                animation1InProgress = true;  // Set animationInProgress to true
-
-                playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
-                if (playerManager.canDoCombo)
-                {
-                    animation1InProgress = false;
-                    return;
                 }
                 playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
             }
@@ -156,4 +145,23 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public void Animation1True()
+    {
+        animation1InProgress = true;
+    }
+
+    public void Animation1False()
+    {
+        animation1InProgress = false;
+    }
+
+    public void Animation2True()
+    {
+        animation2InProgress = true;
+    }
+
+    public void Animation2False()
+    {
+        animation2InProgress = false;
+    }
 }

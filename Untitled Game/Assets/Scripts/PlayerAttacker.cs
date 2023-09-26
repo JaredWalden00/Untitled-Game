@@ -23,20 +23,20 @@ using UnityEngine;
             animtorManager.animator.SetBool("canDoCombo", false);
             if (lastAttack == weapon.OH_Light_Attack_1)
             {
-                animtorManager.PlayAttack2Animation(weapon.OH_Light_Attack_2, true); //needs to be second attack
+                animtorManager.PlayTargetAnimation(weapon.OH_Light_Attack_2, true); //needs to be second attack
             }
         }    
     }
 
         public void HandleLightAttack(WeaponItem weapon)
         {
-            animtorManager.PlayAttack1Animation(weapon.OH_Light_Attack_1, true);
+            animtorManager.PlayTargetAnimation(weapon.OH_Light_Attack_1, true);
         lastAttack = weapon.OH_Light_Attack_1;
         }
 
         public void HandleHeavyAttack(WeaponItem weapon)
         {
-            animtorManager.PlayAttack1Animation(weapon.OH_Heavy_Attack_1, true);
+            animtorManager.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
         lastAttack = weapon.OH_Heavy_Attack_1;
         }
     }

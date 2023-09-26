@@ -33,35 +33,6 @@ public class AnimatorManager : MonoBehaviour
         animator.CrossFade(targetAnimation, 0.2f);
     }
 
-    public void PlayAttack1Animation(string targetAnimation, bool isInteracting)
-    {
-        animator.SetBool("isInteracting", isInteracting);
-        animator.CrossFade(targetAnimation, 0.2f);
-        StartCoroutine(WaitForAnimation1(targetAnimation));
-    }
-
-    public void PlayAttack2Animation(string targetAnimation, bool isInteracting)
-    {
-        animator.SetBool("isInteracting", isInteracting);
-        animator.CrossFade(targetAnimation, 0.2f);
-        StartCoroutine(WaitForAnimation2(targetAnimation));
-    }
-
-    private IEnumerator WaitForAnimation1(string animationName)
-    {
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        if (animationName == playerAttacker.lastAttack)
-        {
-            inputManager.animation1InProgress = false;  // Reset animationInProgress
-        }
-    }
-
-    private IEnumerator WaitForAnimation2(string animationName)
-    {
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        inputManager.animation2InProgress = false;  // Reset animationInProgress
-    }
-
     public void EnableCombo()
     {
         animator.SetBool("canDoCombo", true);
